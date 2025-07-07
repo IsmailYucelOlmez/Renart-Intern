@@ -1,21 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 
-export type Filter = {
 
-    price:{
-        min: number;
-        max: number;
-    },
-    popularityScore:{
-        min: number;
-        max: number;
-    },
-}
 
 export const useGetProducts = ({filter}: {filter: Filter}) => {
 
-    const getProductsRequest = async () => {
-        const response = await fetch("https://api.example.com/products");
+    const getProductsRequest = async () => {       
+
+        const queryString = `?minPrice=${filter.price.min}&maxPrice=${filter.price.max}&minPopularity=${filter.popularityScore.min}&maxPopularity=${filter.popularityScore.max}`;
+        
+        const response = await fetch(`http://localhost:3000/api/products${queryString}`);
 
         if (!response.ok) {
             throw new Error("Failed to fetch products");

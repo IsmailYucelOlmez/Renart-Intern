@@ -3,8 +3,8 @@ const StarSection = ({point}: {point: number}) => {
   const normalizedPoint = Math.max(0, Math.min(1, point));
   
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-      <div style={{ display: 'flex', gap: '2px' }}>
+    <div className="flex items-center gap-4">
+      <div className="flex gap-2">
         {[...Array(5)].map((_, index) => {
           const starValue = normalizedPoint * 5;
           const isFullyFilled = index < Math.floor(starValue);
@@ -12,7 +12,7 @@ const StarSection = ({point}: {point: number}) => {
           const partialFill = isPartiallyFilled ? (starValue % 1) : 0;
           
           return (
-            <div key={index} style={{ position: 'relative', width: '20px', height: '20px' }}>
+            <div key={index} className="relative w-5 h-5">
               {/* Background star (always gray) */}
               <svg
                 width="20"
@@ -55,8 +55,8 @@ const StarSection = ({point}: {point: number}) => {
           );
         })}
       </div>
-      <div style={{ fontSize: '12px', color: '#666' }}>
-        Rating: {point.toFixed(2)} ({Math.round(normalizedPoint * 5 * 10) / 10}/5)
+      <div className="text-[14px] text-gray-500 product-card-score">
+          {`${Math.round(normalizedPoint * 5 * 10) / 10}/5`}
       </div>
     </div>
   );

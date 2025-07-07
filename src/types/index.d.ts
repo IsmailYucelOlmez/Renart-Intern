@@ -1,6 +1,6 @@
 declare interface Product {
     name: string;
-    price?: number;
+    price: number;
     popularityScore: number;
     weight: number;
     images: {
@@ -8,4 +8,16 @@ declare interface Product {
         rose: string;
         white: string;
     };
+}
+
+declare interface Filter {
+
+    price:{
+        min: number;
+        max: number;
+    },
+    popularityScore:{
+        min: number;
+        max: number;
+    },
 }

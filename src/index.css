@@ -1,1 +1,6 @@
+@import "./assets/Fonts/fonts.css";
 @import "tailwindcss";
+
+body {
+  font-family: 'Montserrat', 'Avenir', Arial, sans-serif;
+}
