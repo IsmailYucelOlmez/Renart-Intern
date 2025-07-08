@@ -5,7 +5,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import FilterSection from './components/FilterSection';
 import { responsive } from './utils/index';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useGetProducts } from './api/productApi';
 
 function App() {
@@ -21,18 +21,8 @@ function App() {
     },
   });
 
-  const {data: products, isLoading, error, maxPrice} = useGetProducts({filter})
-  
-  // Update max price when products change
-  useEffect(() => {
-    setFilter(prev => ({
-      ...prev,
-      price: {
-        ...prev.price,
-        max: maxPrice
-      }
-    }));
-  }, [maxPrice]);
+  const {data: products, isLoading, error} = useGetProducts({filter})
+
   
   return (
     <div className='w-full lg:w-3/4 mx-auto flex flex-col gap-4 justify-center h-screen my-4 px-4 lg:px-0'>

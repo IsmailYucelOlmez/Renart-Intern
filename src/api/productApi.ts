@@ -27,10 +27,5 @@ export const useGetProducts = ({filter}: {filter: Filter}) => {
         queryFn: getProductsRequest,
     })
 
-    // Compute max price from products
-    const maxPrice = data && data.length > 0 
-        ? Math.max(...data.map((product: Product) => product.price.toFixed(2) || 0))
-        : filter.price.max;
-
-    return {data, isLoading, error, maxPrice}
+    return {data, isLoading, error}
 }

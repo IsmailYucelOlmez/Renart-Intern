@@ -2,7 +2,7 @@ import Slider from "rc-slider"
 import "rc-slider/assets/index.css"
 
 
-const FilterSection = ({filter, setFilter}: {filter: Filter, setFilter: (filter: Filter) => void}) => {
+const FilterSection = ({ filter, setFilter}: { filter: Filter, setFilter: (filter: Filter) => void}) => {
 
     return (
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 font-avenir">
@@ -13,12 +13,12 @@ const FilterSection = ({filter, setFilter}: {filter: Filter, setFilter: (filter:
                     <Slider
                         range
                         min={0}
-                        max={filter.price.max}
+                        max={50000}
                         value={[filter.price.min, filter.price.max]}
                         onChange={(val) => {
                             if (Array.isArray(val) && val.length === 2) setFilter({...filter, price: {min: val[0], max: val[1]}})
                         }}
-                        allowCross={false}
+                        allowCross={true}
                         trackStyle={[{ backgroundColor: '#000', height: 3 }]}
                         handleStyle={[
                             { backgroundColor: '#000', borderColor: '#fff', height: 16, width: 16 },
