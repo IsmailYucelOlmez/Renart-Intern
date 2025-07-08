@@ -1,10 +1,12 @@
 import './App.css'
 import ProductCard from './components/ProductCard'
 import ProductCardSkeleton from './components/ProductCardSkeleton'
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Scrollbar } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/scrollbar';
 import FilterSection from './components/FilterSection';
-import { responsive } from './utils/index';
 import { useState } from 'react';
 import { useGetProducts } from './api/productApi';
 
@@ -30,32 +32,49 @@ function App() {
       <FilterSection filter={filter} setFilter={setFilter} />
       {error && <p>Error: {error.message}</p>}
       {isLoading ? (
-        <Carousel responsive={responsive} className='w-full' >
+        <Swiper
+          spaceBetween={16}
+          className='w-full'
+          modules={[Navigation, Scrollbar]}
+          navigation
+          scrollbar={{ draggable: true }}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 4 },
+          }}
+        >
           {[...Array(8)].map((_, index: number) => (
-            <ProductCardSkeleton key={index} />
+            <SwiperSlide key={index}>
+              <ProductCardSkeleton />
+            </SwiperSlide>
           ))}
-        </Carousel>
+        </Swiper>
       ) : (
-        <>    
-          {products && products.length > 0 ? (          
-            <Carousel 
-              responsive={responsive} 
-              className='w-full' 
-              sliderClass='overflow-x-auto'
-              key={products.length} // Force re-render when products change
-              infinite={false}
-              autoPlay={false}
-              shouldResetAutoplay={false}
+        <>
+          {products && products.length > 0 ? (
+            <Swiper
+              spaceBetween={16}
+              className='w-full'
+              modules={[Navigation, Scrollbar]}
+              navigation
+              scrollbar={{ draggable: true }}
+              breakpoints={{
+                0: { slidesPerView: 1 },
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 4 },           
+              }}
             >
-              
               {products.map((product: Product, index: number) => (
-                <ProductCard key={`${product.name}-${index}`} product={product} />
+                <SwiperSlide key={`${product.name}-${index}`} className='mb-4'>
+                  <ProductCard product={product} />
+                </SwiperSlide>
               ))}
-            </Carousel>       
+            </Swiper>
           ) : (
             <p className='text-center text-gray-500'>No products found matching your criteria.</p>
           )}
-      </>
+        </>
       )}
     </div>
   )

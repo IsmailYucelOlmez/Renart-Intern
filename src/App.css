@@ -28,6 +28,28 @@
   right: 10px !important;
 }
 
+/* Swiper Navigation Arrow Customization */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000 !important;
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 20px !important;
+  font-weight: 350 !important;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  color: #000 !important;
+  font-size: 20px !important;
+}
+
+/* Optional: Make arrows more visible on hover */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #000 !important;
+}
+
 /* Global: Hide all scrollbar buttons (triangles) in the app */
 *::-webkit-scrollbar-button {
   display: none !important;
@@ -39,6 +61,13 @@
 /* Optional: Hide arrows on mobile */
 @media (max-width: 768px) {
   .react-multiple-carousel__arrow {
+    display: none !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .swiper-button-next,
+  .swiper-button-prev {
     display: none !important;
   }
 }
