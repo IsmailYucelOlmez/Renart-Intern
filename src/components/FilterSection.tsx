@@ -13,7 +13,7 @@ const FilterSection = ({filter, setFilter}: {filter: Filter, setFilter: (filter:
                     <Slider
                         range
                         min={0}
-                        max={50000}
+                        max={filter.price.max}
                         value={[filter.price.min, filter.price.max]}
                         onChange={(val) => {
                             if (Array.isArray(val) && val.length === 2) setFilter({...filter, price: {min: val[0], max: val[1]}})

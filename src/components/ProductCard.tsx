@@ -9,7 +9,9 @@ const ProductCard = ({product}: {product: Product}) => {
 
   return (
     <div className='flex flex-col gap-4 mb-4'>
-      <Image src={product.images[color as keyof typeof product.images]} className='w-full h-full object-cover' />
+      <div className='w-full h-53 relative overflow-hidden'>
+        <Image src={product.images[color as keyof typeof product.images]} className='w-full h-full object-cover' />
+      </div>
       <div className='flex flex-col gap-4'>
         <div className='flex flex-col gap-2'>
             <h1 className='text-2xl font-bold product-card-title'>{product.name}</h1>

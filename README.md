@@ -1,69 +1,58 @@
-# React + TypeScript + Vite
+# Renart Intern
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Renart Intern** is a modern web application that allows users to browse, filter, and view products. Users can explore product details, filter products by various criteria, and enjoy a responsive, user-friendly interface.
 
-Currently, two official plugins are available:
+A modern web application built with **React**, **TypeScript**, and **Vite**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- ⚡️ Lightning-fast development with Vite
+- 🛠️ Type-safe codebase using TypeScript
+- 📦 Modular component structure
+- 🧹 Integrated ESLint for code quality
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v16 or higher recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Clone the repository and install dependencies:
+
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd renartintern
+
+# Install dependencies
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Running the Development Server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run dev
+```
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+The app will be available at [http://localhost:5173](http://localhost:5173) by default.
+
+## Project Structure
+
+```
+renartintern/
+├── public/               # Static assets
+├── src/
+│   ├── api/              # API utilities
+│   ├── assets/           # Fonts, images, and other assets
+│   ├── components/       # Reusable React components
+│   ├── types/            # TypeScript type definitions
+│   ├── utils/            # Utility functions
+│   ├── App.tsx           # Main app component
+│   └── main.tsx          # Entry point
+├── index.html            # HTML template
+├── package.json          # Project metadata and scripts
+├── tsconfig*.json        # TypeScript configuration
+└── vite.config.ts        # Vite configuration
 ```
